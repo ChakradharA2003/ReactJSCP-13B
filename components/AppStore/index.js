@@ -311,10 +311,12 @@ class AppStore extends Component {
     })
   }
 
-  getFilteredApps = () => {
+ getFilteredApps = () => {
     const {appCategory, search} = this.state
-    const filteredApps = appsList.filter(app => app.category === appCategory)
-    // const filteredApps = filterApps.map(app => app.appName.includes(search))
+    let filteredApps = appsList.filter(app => app.category === appCategory)
+    filteredApps = filteredApps.filter(app =>
+      app.appName.toLowerCase().includes(search.toLowerCase()),
+    )
     return filteredApps
   }
 
